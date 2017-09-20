@@ -31,7 +31,8 @@ jQuery.fn.contextPopup = function(menuData) {
 		headerClass: 'header',
 		seperatorClass: 'divider',
 		title: '',
-		items: []
+		items: [],
+		showEvent:"contextmenu",    //配置事件触发方式  默认是右键触发
 	};
 	
 	// merge them
@@ -72,8 +73,8 @@ jQuery.fn.contextPopup = function(menuData) {
     return menu;
   }
 
-  // On contextmenu event (right click)
-  this.on('contextmenu', function(e) {
+  //绑定  触发操作
+ this.bind(settings.showEvent, function(e) {	
     var menu = createMenu(e)
       .show();
     
